@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anigiri | Onigiri Autentik</title>
+    <style>
+        /* === RESET === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* === PENGATURAN LAYAR PENUH & BACKGROUND GAMBAR === */
+        body {
+            height: 100vh; 
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            color: white; 
+            
+            
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1615361200141-f45040f367be?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+        }
+
+        /* === NAVBAR (Semantic) === */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e63946; 
+        }
+
+        /* === KONTEN UTAMA  === */
+        main {
+            flex: 1; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center; 
+            padding: 0 20px;
+        }
+
+        .content {
+            max-width: 800px;
+        
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: #e63946;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4);
+            transition: all 0.5s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #d62828;
+            transform: translateY(-3px); /* Efek tombol naik sedikit saat disorot */
+            box-shadow: 0 15px 25px rgba(230, 57, 70, 0.6);
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">ANIGIRI</div>
+        <nav>
+            <a href="#">Beranda</a>
+            <a href="#">Menu</a>
+            <a href="#">Promo</a>
+            <a href="#">Lokasi</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            <h1>Satu Gigitan,<br>Sejuta Rasa.</h1>
+            <p>Praktis, Mengenyangkan, dan Ekonomis</p>
+            <a href="#" class="cta-btn">Pesan Sekarang</a>
+        </div>
+    </main>
+
+</body>
+</html>
