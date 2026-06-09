@@ -1,0 +1,43 @@
+:root {
+    --lime: #D1FF00;
+}
+
+/* Memastikan background hitam pekat */
+body {
+    background-color: #000000 !important;
+}
+
+.text-lime { color: var(--lime) !important; }
+.btn-lime { background-color: var(--lime); color: #000; border: none; font-weight: bold; }
+.btn-lime:hover { background-color: #b8e200; }
+
+/* Lingkaran di belakang foto */
+.hero-bg-circle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-color: var(--lime);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    opacity: 0.9;
+}
+
+.profile-img {
+    z-index: 1;
+}
+
+/* Hover effect sesuai tugas */
+.project-card {
+    transition: 0.3s;
+}
+.project-card:hover {
+    border-color: var(--lime) !important;
+    transform: translateY(-5px);
+}
+
+.custom-nav a:hover {
+    color: var(--lime) !important;
+}

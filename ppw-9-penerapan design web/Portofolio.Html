@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Rasya</title>
+    <!-- LINK BOOTSTRAP INI HARUS ADA & BUTUH INTERNET -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    
+    <style>
+        /* Kita masukkan CSS langsung di sini agar tidak pusing cek folder assets */
+        body { background-color: #000 !important; color: white !important; font-family: 'Segoe UI', sans-serif; }
+        .text-lime { color: #D1FF00 !important; }
+        .btn-lime { background-color: #D1FF00; color: black; font-weight: bold; border: none; border-radius: 8px; }
+        .btn-lime:hover { background-color: #b8e600; }
+        .hero-bg-circle {
+            position: absolute; width: 300px; height: 300px; background: #D1FF00;
+            border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            opacity: 0.6; z-index: -1; filter: blur(40px);
+        }
+        .project-card { background: #111; border: 1px solid #333; transition: 0.3s; border-radius: 15px; }
+        .project-card:hover { border-color: #D1FF00; transform: translateY(-5px); }
+        .navbar { border-bottom: 1px solid #333; }
+        .profile-img { width: 280px; height: 280px; object-fit: cover; border-radius: 50%; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-lime" href="#">RD PORTOFOLIO</a>
+            <div class="ms-auto d-flex">
+                <a href="#hero" class="nav-link text-white mx-2">Home</a>
+                <a href="#project" class="nav-link text-white mx-2">Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div id="hero" class="container py-5 mt-md-5">
+        <div class="row align-items-center flex-column-reverse flex-md-row">
+            <div class="col-md-6 text-center text-md-start">
+                <h1 class="display-4 fw-bold">HI, Im <span class="text-lime">Rasya Anugrah Dyvanio</span></h1>
+                <p class="lead text-secondary">Mahasiswa Software Engineering UGM</p>
+                <p class="text-secondary small mb-4">Membangun infrastruktur data yang efisien dan inovatif.</p>
+                <div class="d-grid d-md-block gap-3">
+                    <button class="btn btn-lime px-4 py-2 me-md-2">Email Me</button>
+                    <a href="#project" class="btn btn-outline-light px-4 py-2">Lihat Projek &rarr;</a>
+                </div>
+            </div>
+            <div class="col-md-6 position-relative py-5 text-center">
+                <div class="hero-bg-circle"></div>
+                <!-- GANTI src DI BAWAH INI SESUAI NAMA FILE FOTO KAMU -->
+                <img src="assets/css/Image/profile.jpeg" alt="Rasya" class="profile-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT SECTION -->
+    <div id="project" class="container py-5">
+        <h3 class="text-lime fw-bold mb-4 text-center">PROJECT</h3>
+        <div class="row g-4">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card project-card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-lime">UGM Course Tracker</h5>
+                        <p class="card-text text-secondary small">Aplikasi web pemantau progress mata kuliah S1 TRPL.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Bisa copy-paste div col-12 di atas untuk proyek kedua -->
+        </div>
+    </div>
+
+</body>
+</html>
