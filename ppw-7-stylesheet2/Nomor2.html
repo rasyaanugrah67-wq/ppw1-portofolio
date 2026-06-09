@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Midnight Vanilla</title>
+    <style>
+        /* Variabel Warna dari Palet */
+        :root {
+            --midnight: #212842;
+            --vanilla: #F0E7D5;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--vanilla); color: var(--midnight); line-height: 1.6; }
+
+        /* Navbar*/
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: var(--midnight);
+            color: var(--vanilla);
+        
+        }
+        .nav :hover { color: var(--vanilla); }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .menu a { color: var(--vanilla); text-decoration: none; margin-left: 20px; font-weight: 500; }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 80px 10%;
+            gap: 40px;
+            min-height: 70vh;
+        }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero-img { flex: 1; text-align: center; }
+
+        .img{
+            max-width: 300px; 
+            width: 100%;      
+            height: auto;     
+            border-radius: 20px;
+        }
+        
+
+        /* Card Grid */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 60px 10%;
+            background-color: var(--white);
+        }
+        .card {
+            flex: 1 1 300px;
+            background: var(--vanilla);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--midnight);
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); background: var(--midnight); color: var(--vanilla); }
+
+        /* 4. Footer: 3 Kolom dengan Gap */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 50px 10%;
+            background: var(--midnight);
+            color: var(--vanilla);
+        }
+        .footer-col { flex: 1; }
+        .footer-col h4 { margin-bottom: 15px; border-bottom: 1px solid var(--vanilla); display: inline-block; }
+
+        /*  Media Query untuk Satu Kolom */
+        @media (max-width: 768px) {
+            .hero, footer { flex-direction: column; text-align: center; }
+            nav { flex-direction: column; gap: 15px; }
+            .hero-text h1 { font-size: 2rem; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">PORTOFOLIO</div>
+        <div class="menu">
+            <a href="Nomor2.html">Home</a>
+            <a href="#">Achievements</a>
+            <a href="Nomor1.html">About Me</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h3>Hi, Im</h3>
+            <h1>Rasya Anugrah Dyvanio</h1>
+            <h2>Frontend Developer</h2>
+            <p>Mahasiswa Teknologi Rekayasa Perangkat Lunak Universitas Gadjah Mada</p>
+        </div>
+        <div class="hero-img">
+            <img src="priasolo.png" alt="Profile Image" class="img">
+        </div>
+    </section>
+
+    <!-- Card Grid -->
+    <div class="card-container">
+        <div class="card">
+            <h3>Profile</h3>
+            <p>lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="card">
+            <h3>Skills</h3>
+            <p> HTML, CSS, JavaScript, React, Figma.</p>
+        </div>
+        <div class="card">
+            <h3>Achievements</h3>
+            <p>lorem ipsum dolor sit amet.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-col">
+            <h4>About Me</h4>
+            <p>lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <p>rasya.anugrah.dyvanio@gmail.com<br>Yogyakarta, Indonesia</p>
+        </div>
+        <div class="footer-col">
+            <h4>More Info</h4>
+            <p>+62 9999 0000 777<br>@rasya_anugrah</p>
+        </div>
+    </footer>
+
+</body>
+</html>

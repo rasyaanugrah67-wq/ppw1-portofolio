@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHEATSHEET_WEB1_UTS.html</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #000000;
+    --white: #ffffff;
+    --gray-100: #f5f5f5;
+    --gray-200: #e8e8e8;
+    --gray-300: #d0d0d0;
+    --gray-400: #999999;
+    --gray-700: #444444;
+    --border: 1px solid #000;
+    --border-thin: 1px solid #aaaaaa;
+    --font: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  body {
+    font-family: var(--font);
+    font-size: 9.5px;
+    line-height: 1.35;
+    background: var(--white);
+    color: var(--black);
+    width: 297mm;
+    min-height: 210mm;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: var(--black);
+    color: var(--white);
+    padding: 5px 10px 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #000;
+  }
+  .header .title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .header .meta {
+    font-size: 8px;
+    color: #aaa;
+    margin-left: auto;
+  }
+  .header .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 3px; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+
+  /* ─── TAB BAR ─── */
+  .tabbar {
+    background: var(--gray-100);
+    border-bottom: var(--border);
+    display: flex;
+    overflow: hidden;
+  }
+  .tab {
+    padding: 3px 10px;
+    font-size: 8.5px;
+    border-right: 1px solid #ccc;
+    cursor: pointer;
+    white-space: nowrap;
+    color: var(--gray-700);
+  }
+  .tab.active {
+    background: var(--white);
+    border-top: 2px solid var(--black);
+    color: var(--black);
+    font-weight: 700;
+    margin-top: 0;
+  }
+
+  /* ─── LAYOUT ─── */
+  .workspace {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    height: calc(100% - 50px);
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    background: var(--gray-100);
+    border-right: var(--border);
+    padding: 4px 0;
+    font-size: 8px;
+  }
+  .sidebar-section {
+    padding: 2px 0;
+    border-bottom: 1px solid var(--gray-300);
+  }
+  .sidebar-section-title {
+    padding: 2px 8px;
+    font-size: 7.5px;
+    font-weight: 700;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .sidebar-item {
+    padding: 1.5px 8px 1.5px 16px;
+    cursor: pointer;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 8px;
+  }
+  .sidebar-item:hover { background: var(--gray-200); }
+  .sidebar-item.active { background: #ddd; font-weight: 600; }
+  .sidebar-item::before { content: '›'; color: var(--gray-400); font-size: 9px; }
+  .line-num-col {
+    position: absolute;
+    left: 0;
+    width: 110px;
+    color: var(--gray-400);
+    font-size: 7px;
+    text-align: right;
+    padding-right: 4px;
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  .main {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    padding: 0;
+    align-content: start;
+  }
+
+  /* ─── SECTION BLOCKS ─── */
+  .section {
+    border-right: var(--border-thin);
+    border-bottom: var(--border-thin);
+    padding: 5px 6px;
+    break-inside: avoid;
+  }
+  .section:nth-child(3n) { border-right: none; }
+  .section-header {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-bottom: 2px solid var(--black);
+    margin-bottom: 3px;
+    padding-bottom: 1px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .section-header .icon { font-size: 8px; }
+  .section.full-width { grid-column: 1 / -1; border-right: none; }
+  .section.two-col { grid-column: span 2; }
+
+  /* ─── CODE BLOCKS ─── */
+  pre, code {
+    font-family: var(--font);
+    font-size: 8.5px;
+    background: var(--white);
+    color: var(--black);
+  }
+  pre {
+    border: 1px solid var(--black);
+    padding: 3px 5px;
+    margin: 2px 0;
+    white-space: pre;
+    overflow: hidden;
+    line-height: 1.3;
+  }
+  code {
+    background: var(--gray-200);
+    padding: 0 2px;
+    border-radius: 2px;
+    font-size: 8px;
+  }
+  .kw { font-weight: 700; } /* keyword */
+  .cm { color: #666; font-style: italic; } /* comment */
+  .str { } /* string — stay black */
+  .attr { font-weight: 600; } /* attribute */
+
+  /* ─── MINI TABLES ─── */
+  table { width: 100%; border-collapse: collapse; font-size: 8px; margin: 2px 0; }
+  th {
+    background: var(--black);
+    color: var(--white);
+    padding: 1.5px 4px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 7.5px;
+  }
+  td { padding: 1px 4px; border-bottom: 1px solid var(--gray-200); }
+  tr:nth-child(even) td { background: var(--gray-100); }
+  td code { background: none; padding: 0; font-size: 8px; font-weight: 600; }
+
+  /* ─── LABEL BADGES ─── */
+  .badge {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    font-size: 6.5px;
+    padding: 0 3px;
+    border-radius: 2px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .badge.outline {
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+  }
+
+  /* ─── GRID INSIDE SECTION ─── */
+  .two-col-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .three-col-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; }
+
+  p { font-size: 8.5px; margin: 1.5px 0; }
+  .label { font-size: 7.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-700); margin: 2px 0 1px; }
+  ul { padding-left: 10px; font-size: 8.5px; }
+  li { margin: 0.5px 0; }
+
+  /* ─── STATUSBAR ─── */
+  .statusbar {
+    background: var(--black);
+    color: var(--white);
+    font-size: 7.5px;
+    padding: 2px 8px;
+    display: flex;
+    gap: 12px;
+    border-top: var(--border);
+  }
+  .statusbar span { opacity: 0.8; }
+
+  /* ─── PRINT ─── */
+  @media print {
+    body { width: 297mm; }
+    @page { size: A4 landscape; margin: 5mm; }
+    .section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <span class="dot dot-r"></span>
+  <span class="dot dot-y"></span>
+  <span class="dot dot-g"></span>
+  <span class="title">CHEATSHEET_WEB1_UTS.html</span>
+  <span class="meta">Web Development I &nbsp;|&nbsp; UTS Quick Reference &nbsp;|&nbsp; 2025</span>
+</div>
+
+<!-- TAB BAR -->
+<div class="tabbar">
+  <div class="tab active">📄 cheatsheet.html</div>
+  <div class="tab">01_HTML</div>
+  <div class="tab">02_CSS</div>
+  <div class="tab">03_Flex</div>
+  <div class="tab">04_RWD</div>
+  <div class="tab">05_Forms</div>
+  <div class="tab">TERMINAL</div>
+</div>
+
+<!-- WORKSPACE -->
+<div class="workspace">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📁 EXPLORER</div>
+      <div class="sidebar-item active">HTML Dasar</div>
+      <div class="sidebar-item">Heading & List</div>
+      <div class="sidebar-item">Link & Iframe</div>
+      <div class="sidebar-item">Image</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📁 DATA</div>
+      <div class="sidebar-item">Tabel</div>
+      <div class="sidebar-item">rowspan/colspan</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📁 FORM</div>
+      <div class="sidebar-item">Input Types</div>
+      <div class="sidebar-item">Select & Option</div>
+      <div class="sidebar-item">Textarea</div>
+      <div class="sidebar-item">Label & Button</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📁 CSS</div>
+      <div class="sidebar-item">3 Cara Tulis</div>
+      <div class="sidebar-item">Box Model</div>
+      <div class="sidebar-item">Typography</div>
+      <div class="sidebar-item">Display</div>
+      <div class="sidebar-item">Pseudo-class</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📁 LAYOUT</div>
+      <div class="sidebar-item">Flexbox Parent</div>
+      <div class="sidebar-item">Flexbox Child</div>
+      <div class="sidebar-item">Media Query</div>
+      <div class="sidebar-item">Breakpoints</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📁 PRIORITY</div>
+      <div class="sidebar-item">Code Card</div>
+      <div class="sidebar-item">Landing Page</div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <!-- 1. HTML STRUKTUR DASAR -->
+    <div class="section">
+      <div class="section-header"><span class="icon">🏗</span> HTML DASAR</div>
+      <pre><span class="kw">&lt;!DOCTYPE html&gt;</span>
+<span class="kw">&lt;html</span> <span class="attr">lang</span>=<span class="str">"id"</span><span class="kw">&gt;</span>
+<span class="kw">&lt;head&gt;</span>
+  &lt;meta <span class="attr">charset</span>=<span class="str">"UTF-8"</span>&gt;
+  &lt;meta <span class="attr">name</span>=<span class="str">"viewport"</span>
+        <span class="attr">content</span>=<span class="str">"width=device-width,
+        initial-scale=1.0"</span>&gt;
+  &lt;title&gt;Judul Halaman&lt;/title&gt;
+  &lt;link <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">href</span>=<span class="str">"style.css"</span>&gt;
+<span class="kw">&lt;/head&gt;</span>
+<span class="kw">&lt;body&gt;</span>
+  <span class="cm">&lt;!-- konten --&gt;</span>
+<span class="kw">&lt;/body&gt;&lt;/html&gt;</span></pre>
+      <div class="label">Semantic HTML5</div>
+      <table>
+        <tr><th>Tag</th><th>Fungsi</th></tr>
+        <tr><td><code>&lt;header&gt;</code></td><td>Kepala halaman/section</td></tr>
+        <tr><td><code>&lt;nav&gt;</code></td><td>Navigasi</td></tr>
+        <tr><td><code>&lt;main&gt;</code></td><td>Konten utama</td></tr>
+        <tr><td><code>&lt;section&gt;</code></td><td>Bagian tematik</td></tr>
+        <tr><td><code>&lt;article&gt;</code></td><td>Konten mandiri</td></tr>
+        <tr><td><code>&lt;aside&gt;</code></td><td>Sidebar/konten samping</td></tr>
+        <tr><td><code>&lt;footer&gt;</code></td><td>Kaki halaman</td></tr>
+      </table>
+    </div>
+
+    <!-- 2. HEADING, LIST, LINK -->
+    <div class="section">
+      <div class="section-header"><span class="icon">🔤</span> HEADING · LIST · LINK</div>
+      <div class="two-col-inner">
+        <div>
+          <div class="label">Heading h1–h6</div>
+          <pre>&lt;h1&gt;Terbesar&lt;/h1&gt;
+&lt;h2&gt;Sub&lt;/h2&gt;
+&lt;h3&gt;Sub-sub&lt;/h3&gt;
+<span class="cm">&lt;!-- h4, h5, h6 --&gt;</span></pre>
+          <div class="label">Ordered List</div>
+          <pre>&lt;ol <span class="attr">type</span>=<span class="str">"1|A|a|I|i"</span>
+    <span class="attr">start</span>=<span class="str">"3"</span>&gt;
+  &lt;li&gt;Item&lt;/li&gt;
+&lt;/ol&gt;</pre>
+          <div class="label">Unordered List</div>
+          <pre>&lt;ul <span class="attr">style</span>=<span class="str">"list-style:
+  disc|circle|square"</span>&gt;
+  &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;</pre>
+        </div>
+        <div>
+          <div class="label">Link — Anchor</div>
+          <pre>&lt;a <span class="attr">href</span>=<span class="str">"url"</span>
+   <span class="attr">target</span>=<span class="str">"_blank"</span>
+   <span class="attr">title</span>=<span class="str">"tooltip"</span>&gt;
+  Teks Link
+&lt;/a&gt;</pre>
+          <table>
+            <tr><th>target</th><th>Keterangan</th></tr>
+            <tr><td><code>_blank</code></td><td>Tab baru</td></tr>
+            <tr><td><code>_self</code></td><td>Tab sama</td></tr>
+            <tr><td><code>_parent</code></td><td>Frame induk</td></tr>
+            <tr><td><code>_top</code></td><td>Window penuh</td></tr>
+          </table>
+          <div class="label">Link Khusus</div>
+          <pre><span class="cm">/* ke ID */</span>
+&lt;a <span class="attr">href</span>=<span class="str">"#idnya"</span>&gt;
+<span class="cm">/* email */</span>
+&lt;a <span class="attr">href</span>=<span class="str">"mailto:x@y"</span>&gt;
+<span class="cm">/* telepon */</span>
+&lt;a <span class="attr">href</span>=<span class="str">"tel:+628xx"</span>&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. IMAGE & IFRAME -->
+    <div class="section">
+      <div class="section-header"><span class="icon">🖼</span> IMAGE · IFRAME</div>
+      <div class="label">Image</div>
+      <pre>&lt;img <span class="attr">src</span>=<span class="str">"foto.jpg"</span>
+     <span class="attr">alt</span>=<span class="str">"deskripsi"</span>
+     <span class="attr">width</span>=<span class="str">"300"</span>
+     <span class="attr">height</span>=<span class="str">"200"</span>
+     <span class="attr">loading</span>=<span class="str">"lazy"</span>&gt;</pre>
+      <table>
+        <tr><th>Atribut</th><th>Nilai</th></tr>
+        <tr><td><code>src</code></td><td>path/URL gambar</td></tr>
+        <tr><td><code>alt</code></td><td>teks alternatif (wajib)</td></tr>
+        <tr><td><code>width/height</code></td><td>px atau %</td></tr>
+        <tr><td><code>loading</code></td><td>lazy | eager</td></tr>
+      </table>
+      <div class="label">Iframe</div>
+      <pre>&lt;iframe
+  <span class="attr">src</span>=<span class="str">"https://example.com"</span>
+  <span class="attr">width</span>=<span class="str">"600"</span>
+  <span class="attr">height</span>=<span class="str">"400"</span>
+  <span class="attr">frameborder</span>=<span class="str">"0"</span>
+  <span class="attr">allowfullscreen</span>
+  <span class="attr">title</span>=<span class="str">"Embed"</span>&gt;
+&lt;/iframe&gt;</pre>
+      <p><span class="badge">⚠</span> Gunakan <code>sandbox</code> untuk keamanan iframe eksternal.</p>
+    </div>
+
+    <!-- 4. TABLE -->
+    <div class="section">
+      <div class="section-header"><span class="icon">📊</span> TABLE</div>
+      <pre>&lt;table <span class="attr">border</span>=<span class="str">"1"</span>
+       <span class="attr">cellpadding</span>=<span class="str">"5"</span>
+       <span class="attr">cellspacing</span>=<span class="str">"0"</span>&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th <span class="attr">colspan</span>=<span class="str">"2"</span>&gt;Judul&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td <span class="attr">rowspan</span>=<span class="str">"2"</span>&gt;A&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;C&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;td&gt;Total&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</pre>
+      <table>
+        <tr><th>Atribut</th><th>Fungsi</th></tr>
+        <tr><td><code>colspan="n"</code></td><td>Gabung n kolom →</td></tr>
+        <tr><td><code>rowspan="n"</code></td><td>Gabung n baris ↓</td></tr>
+        <tr><td><code>border="1"</code></td><td>Tampilkan border</td></tr>
+        <tr><td><code>cellpadding</code></td><td>Spasi dalam sel</td></tr>
+        <tr><td><code>cellspacing</code></td><td>Spasi antar sel</td></tr>
+        <tr><td><code>scope</code></td><td>col | row (aksesibel)</td></tr>
+      </table>
+    </div>
+
+    <!-- 5. FORM -->
+    <div class="section">
+      <div class="section-header"><span class="icon">📋</span> FORM</div>
+      <pre>&lt;form <span class="attr">action</span>=<span class="str">"/submit"</span>
+      <span class="attr">method</span>=<span class="str">"POST|GET"</span>
+      <span class="attr">enctype</span>=<span class="str">"multipart/form-data"</span>&gt;
+
+  &lt;label <span class="attr">for</span>=<span class="str">"nama"</span>&gt;Nama:&lt;/label&gt;
+  &lt;input <span class="attr">type</span>=<span class="str">"text"</span>
+         <span class="attr">id</span>=<span class="str">"nama"</span>
+         <span class="attr">name</span>=<span class="str">"nama"</span>
+         <span class="attr">placeholder</span>=<span class="str">"Masukkan nama"</span>
+         <span class="attr">required</span>&gt;
+&lt;/form&gt;</pre>
+      <div class="label">Semua Input Type</div>
+      <table>
+        <tr><th>type</th><th>Kegunaan</th></tr>
+        <tr><td><code>text</code></td><td>Teks satu baris</td></tr>
+        <tr><td><code>password</code></td><td>Kata sandi (tersembunyi)</td></tr>
+        <tr><td><code>email</code></td><td>Validasi format email</td></tr>
+        <tr><td><code>number</code></td><td>Angka (min, max, step)</td></tr>
+        <tr><td><code>tel</code></td><td>Nomor telepon</td></tr>
+        <tr><td><code>url</code></td><td>Validasi URL</td></tr>
+        <tr><td><code>date</code></td><td>Pilih tanggal</td></tr>
+        <tr><td><code>time</code></td><td>Pilih waktu</td></tr>
+        <tr><td><code>checkbox</code></td><td>Multi pilihan</td></tr>
+        <tr><td><code>radio</code></td><td>Satu pilihan</td></tr>
+        <tr><td><code>file</code></td><td>Upload file</td></tr>
+        <tr><td><code>range</code></td><td>Slider (min–max)</td></tr>
+        <tr><td><code>color</code></td><td>Color picker</td></tr>
+        <tr><td><code>hidden</code></td><td>Nilai tersembunyi</td></tr>
+        <tr><td><code>submit</code></td><td>Kirim form</td></tr>
+        <tr><td><code>reset</code></td><td>Reset form</td></tr>
+        <tr><td><code>search</code></td><td>Input pencarian</td></tr>
+      </table>
+    </div>
+
+    <!-- 6. SELECT, TEXTAREA, BUTTON -->
+    <div class="section">
+      <div class="section-header"><span class="icon">🎛</span> SELECT · TEXTAREA · BTN</div>
+      <div class="label">Select Dropdown</div>
+      <pre>&lt;select <span class="attr">name</span>=<span class="str">"kota"</span>
+        <span class="attr">multiple</span> <span class="attr">size</span>=<span class="str">"3"</span>&gt;
+  &lt;optgroup <span class="attr">label</span>=<span class="str">"Jawa"</span>&gt;
+    &lt;option <span class="attr">value</span>=<span class="str">"jkt"</span>
+            <span class="attr">selected</span>&gt;Jakarta
+    &lt;/option&gt;
+    &lt;option <span class="attr">value</span>=<span class="str">"bdg"</span>&gt;Bandung
+    &lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;</pre>
+      <div class="label">Textarea</div>
+      <pre>&lt;textarea
+  <span class="attr">name</span>=<span class="str">"pesan"</span>
+  <span class="attr">rows</span>=<span class="str">"4"</span>
+  <span class="attr">cols</span>=<span class="str">"40"</span>
+  <span class="attr">placeholder</span>=<span class="str">"Tulis pesan..."</span>
+  <span class="attr">maxlength</span>=<span class="str">"500"</span>&gt;
+&lt;/textarea&gt;</pre>
+      <div class="label">Button</div>
+      <pre>&lt;button <span class="attr">type</span>=<span class="str">"submit|reset|button"</span>
+        <span class="attr">disabled</span>&gt;Kirim&lt;/button&gt;
+
+<span class="cm">&lt;!-- Atribut validasi --&gt;</span>
+<span class="attr">required</span> | <span class="attr">min</span>=<span class="str">"0"</span> | <span class="attr">max</span>=<span class="str">"100"</span>
+<span class="attr">minlength</span>=<span class="str">"3"</span> | <span class="attr">maxlength</span>=<span class="str">"50"</span>
+<span class="attr">pattern</span>=<span class="str">"[A-Za-z]{3,}"</span>
+<span class="attr">readonly</span> | <span class="attr">disabled</span>
+<span class="attr">autocomplete</span>=<span class="str">"on|off"</span></pre>
+    </div>
+
+    <!-- 7. CSS 3 CARA TULIS -->
+    <div class="section">
+      <div class="section-header"><span class="icon">🎨</span> CSS — 3 CARA PENULISAN</div>
+      <div class="two-col-inner">
+        <div>
+          <div class="label"><span class="badge">1</span> Inline</div>
+          <pre>&lt;p <span class="attr">style</span>=<span class="str">"color:red;
+  font-size:14px"</span>&gt;
+  Teks&lt;/p&gt;</pre>
+          <div class="label"><span class="badge">2</span> Internal</div>
+          <pre>&lt;style&gt;
+  p {
+    color: blue;
+    font-size: 14px;
+  }
+&lt;/style&gt;</pre>
+          <div class="label"><span class="badge">3</span> External</div>
+          <pre>&lt;link
+  <span class="attr">rel</span>=<span class="str">"stylesheet"</span>
+  <span class="attr">href</span>=<span class="str">"style.css"</span>&gt;</pre>
+        </div>
+        <div>
+          <div class="label">Selector Types</div>
+          <table>
+            <tr><th>Selector</th><th>Contoh</th></tr>
+            <tr><td>Element</td><td><code>p { }</code></td></tr>
+            <tr><td>Class</td><td><code>.box { }</code></td></tr>
+            <tr><td>ID</td><td><code>#main { }</code></td></tr>
+            <tr><td>Universal</td><td><code>* { }</code></td></tr>
+            <tr><td>Group</td><td><code>h1,h2 { }</code></td></tr>
+            <tr><td>Descendant</td><td><code>div p { }</code></td></tr>
+            <tr><td>Child</td><td><code>ul > li { }</code></td></tr>
+            <tr><td>Attribute</td><td><code>[type="text"]</code></td></tr>
+          </table>
+          <div class="label">Specificity</div>
+          <pre><span class="cm">/* Prioritas (tinggi→rendah): */</span>
+!important > inline > ID
+> class > element</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. BOX MODEL -->
+    <div class="section">
+      <div class="section-header"><span class="icon">📦</span> BOX MODEL (M–P–B)</div>
+      <pre><span class="kw">.box</span> {
+  <span class="cm">/* MARGIN — luar border */</span>
+  margin: 10px;           <span class="cm">/* all */</span>
+  margin: 10px 20px;      <span class="cm">/* V H */</span>
+  margin: 5px 10px 15px 20px; <span class="cm">/* T R B L */</span>
+  margin: 0 auto;         <span class="cm">/* center */</span>
+
+  <span class="cm">/* PADDING — dalam border */</span>
+  padding: 10px 15px;
+
+  <span class="cm">/* BORDER */</span>
+  border: 2px solid #000;
+  border-radius: 8px;
+
+  <span class="cm">/* SIZING */</span>
+  width: 300px; height: 200px;
+  box-sizing: border-box; <span class="cm">/* ✓ pakai ini */</span>
+}</pre>
+      <table>
+        <tr><th>Properti</th><th>Nilai</th></tr>
+        <tr><td><code>border-style</code></td><td>solid | dashed | dotted | double | none</td></tr>
+        <tr><td><code>border-width</code></td><td>px | thin | medium | thick</td></tr>
+        <tr><td><code>outline</code></td><td>Seperti border, tidak memengaruhi layout</td></tr>
+        <tr><td><code>overflow</code></td><td>visible | hidden | scroll | auto</td></tr>
+      </table>
+    </div>
+
+    <!-- 9. TYPOGRAPHY & DISPLAY -->
+    <div class="section">
+      <div class="section-header"><span class="icon">✍</span> TYPOGRAPHY · DISPLAY</div>
+      <div class="two-col-inner">
+        <div>
+          <div class="label">Typography</div>
+          <table>
+            <tr><th>Prop</th><th>Nilai</th></tr>
+            <tr><td><code>font-family</code></td><td>'Arial', sans-serif</td></tr>
+            <tr><td><code>font-size</code></td><td>px | em | rem | %</td></tr>
+            <tr><td><code>font-weight</code></td><td>100–900 | bold</td></tr>
+            <tr><td><code>font-style</code></td><td>normal | italic</td></tr>
+            <tr><td><code>line-height</code></td><td>1.5 | px</td></tr>
+            <tr><td><code>text-align</code></td><td>left|center|right|justify</td></tr>
+            <tr><td><code>text-decoration</code></td><td>none|underline|line-through</td></tr>
+            <tr><td><code>text-transform</code></td><td>uppercase|lowercase|capitalize</td></tr>
+            <tr><td><code>letter-spacing</code></td><td>px | em</td></tr>
+            <tr><td><code>color</code></td><td>#hex | rgb() | nama</td></tr>
+          </table>
+        </div>
+        <div>
+          <div class="label">Display</div>
+          <table>
+            <tr><th>Nilai</th><th>Perilaku</th></tr>
+            <tr><td><code>block</code></td><td>Full lebar, baris baru</td></tr>
+            <tr><td><code>inline</code></td><td>Sejajar, no width/height</td></tr>
+            <tr><td><code>inline-block</code></td><td>Sejajar + bisa ukuran</td></tr>
+            <tr><td><code>flex</code></td><td>Flexbox container</td></tr>
+            <tr><td><code>grid</code></td><td>Grid container</td></tr>
+            <tr><td><code>none</code></td><td>Sembunyikan elemen</td></tr>
+          </table>
+          <div class="label">Pseudo-class</div>
+          <table>
+            <tr><th>Pseudo</th><th>Kondisi</th></tr>
+            <tr><td><code>:hover</code></td><td>Saat mouse di atas</td></tr>
+            <tr><td><code>:focus</code></td><td>Saat element fokus</td></tr>
+            <tr><td><code>:active</code></td><td>Saat diklik</td></tr>
+            <tr><td><code>:visited</code></td><td>Link sudah dikunjungi</td></tr>
+            <tr><td><code>:first-child</code></td><td>Anak pertama</td></tr>
+            <tr><td><code>:last-child</code></td><td>Anak terakhir</td></tr>
+            <tr><td><code>:nth-child(n)</code></td><td>Anak ke-n</td></tr>
+            <tr><td><code>:not(sel)</code></td><td>Bukan selector ini</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. FLEXBOX -->
+    <div class="section two-col">
+      <div class="section-header"><span class="icon">⚡</span> FLEXBOX — PARENT (Container) vs CHILD (Item)</div>
+      <div class="two-col-inner">
+        <div>
+          <div class="label"><span class="badge">PARENT</span> flex container</div>
+          <pre><span class="kw">.container</span> {
+  display: flex;
+  <span class="cm">/* Arah */</span>
+  flex-direction: row | row-reverse
+                | column | column-reverse;
+  <span class="cm">/* Wrap */</span>
+  flex-wrap: nowrap | wrap | wrap-reverse;
+  <span class="cm">/* Shorthand: direction + wrap */</span>
+  flex-flow: row wrap;
+
+  <span class="cm">/* Penyelarasan Horizontal */</span>
+  justify-content: flex-start | flex-end
+    | center | space-between
+    | space-around | space-evenly;
+
+  <span class="cm">/* Penyelarasan Vertikal */</span>
+  align-items: stretch | flex-start
+    | flex-end | center | baseline;
+
+  <span class="cm">/* Multi-line alignment */</span>
+  align-content: flex-start | center
+    | space-between | stretch;
+
+  gap: 10px;           <span class="cm">/* jarak antar item */</span>
+  row-gap: 10px;
+  column-gap: 20px;
+}</pre>
+        </div>
+        <div>
+          <div class="label"><span class="badge">CHILD</span> flex item</div>
+          <pre><span class="kw">.item</span> {
+  <span class="cm">/* Urutan tampil */</span>
+  order: 0;       <span class="cm">/* default 0 */</span>
+
+  <span class="cm">/* Kemampuan membesar */</span>
+  flex-grow: 0;   <span class="cm">/* default 0 */</span>
+  flex-grow: 1;   <span class="cm">/* isi sisa ruang */</span>
+
+  <span class="cm">/* Kemampuan mengecil */</span>
+  flex-shrink: 1; <span class="cm">/* default 1 */</span>
+
+  <span class="cm">/* Ukuran awal */</span>
+  flex-basis: auto | 200px | 50%;
+
+  <span class="cm">/* Shorthand: grow shrink basis */</span>
+  flex: 1;         <span class="cm">/* = 1 1 0% */</span>
+  flex: 1 1 auto;
+  flex: 0 0 200px; <span class="cm">/* fixed width */</span>
+
+  <span class="cm">/* Override align parent */</span>
+  align-self: auto | flex-start
+    | flex-end | center | stretch;
+}</pre>
+          <div class="label">Trik Umum</div>
+          <pre><span class="cm">/* Center sempurna */</span>
+.parent { display:flex;
+  justify-content:center;
+  align-items:center; }
+
+<span class="cm">/* Equal columns */</span>
+.item { flex: 1; }
+
+<span class="cm">/* Push to right */</span>
+.last { margin-left: auto; }</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. RWD -->
+    <div class="section">
+      <div class="section-header"><span class="icon">📱</span> RWD — RESPONSIVE WEB DESIGN</div>
+      <div class="label">Viewport Meta (WAJIB)</div>
+      <pre>&lt;meta <span class="attr">name</span>=<span class="str">"viewport"</span>
+      <span class="attr">content</span>=<span class="str">"width=device-width, initial-scale=1.0"</span>&gt;</pre>
+      <div class="label">Media Query Syntax</div>
+      <pre><span class="cm">/* Mobile-First (DIANJURKAN) */</span>
+<span class="kw">@media</span> (min-width: 768px) { <span class="cm">/* tablet+ */</span> }
+<span class="kw">@media</span> (min-width: 1024px) { <span class="cm">/* desktop+ */</span> }
+
+<span class="cm">/* Desktop-First */</span>
+<span class="kw">@media</span> (max-width: 768px) { <span class="cm">/* tablet- */</span> }
+
+<span class="cm">/* Range */</span>
+<span class="kw">@media</span> (min-width:480px) and (max-width:768px) {}
+
+<span class="cm">/* Orientasi */</span>
+<span class="kw">@media</span> (orientation: landscape) {}
+<span class="kw">@media</span> (orientation: portrait) {}</pre>
+      <div class="label">Breakpoints Standar</div>
+      <table>
+        <tr><th>Nama</th><th>Lebar</th><th>Device</th></tr>
+        <tr><td>XS</td><td>&lt; 480px</td><td>HP kecil</td></tr>
+        <tr><td>SM</td><td>≥ 480px</td><td>HP besar</td></tr>
+        <tr><td>MD</td><td>≥ 768px</td><td>Tablet</td></tr>
+        <tr><td>LG</td><td>≥ 1024px</td><td>Laptop</td></tr>
+        <tr><td>XL</td><td>≥ 1280px</td><td>Desktop</td></tr>
+        <tr><td>2XL</td><td>≥ 1536px</td><td>TV/Wide</td></tr>
+      </table>
+      <div class="label">Unit Relatif</div>
+      <table>
+        <tr><th>Unit</th><th>Relatif terhadap</th></tr>
+        <tr><td><code>%</code></td><td>Parent element</td></tr>
+        <tr><td><code>vw</code></td><td>1% lebar viewport</td></tr>
+        <tr><td><code>vh</code></td><td>1% tinggi viewport</td></tr>
+        <tr><td><code>em</code></td><td>font-size parent</td></tr>
+        <tr><td><code>rem</code></td><td>font-size root (html)</td></tr>
+      </table>
+    </div>
+
+    <!-- 12. PRIORITY CODE — FULL WIDTH -->
+    <div class="section full-width">
+      <div class="section-header"><span class="icon">🏆</span> PRIORITY CODE — CARD FLEX + LANDING PAGE SEMANTIC</div>
+      <div class="two-col-inner">
+        <div>
+          <div class="label"><span class="badge">CODE CARD</span> — .card { display: flex }</div>
+          <pre><span class="cm">/* ── HTML ── */</span>
+&lt;div class=<span class="str">"card"</span>&gt;
+  &lt;img class=<span class="str">"card__img"</span> src=<span class="str">"img.jpg"</span> alt=<span class="str">"foto"</span>&gt;
+  &lt;div class=<span class="str">"card__body"</span>&gt;
+    &lt;h3 class=<span class="str">"card__title"</span>&gt;Judul Card&lt;/h3&gt;
+    &lt;p class=<span class="str">"card__text"</span>&gt;Deskripsi singkat.&lt;/p&gt;
+    &lt;a href=<span class="str">"#"</span> class=<span class="str">"card__btn"</span>&gt;Selengkapnya&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<span class="cm">/* ── CSS ── */</span>
+<span class="kw">.card</span> {
+  display: flex;          <span class="cm">/* horizontal layout */</span>
+  flex-direction: row;    <span class="cm">/* default */</span>
+  gap: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 480px;
+}
+<span class="kw">.card__img</span> {
+  width: 150px;
+  object-fit: cover;      <span class="cm">/* crop proporsional */</span>
+  flex-shrink: 0;         <span class="cm">/* jangan mengecil */</span>
+}
+<span class="kw">.card__body</span> {
+  display: flex;
+  flex-direction: column; <span class="cm">/* vertikal */</span>
+  padding: 12px;
+  gap: 6px;
+}
+<span class="kw">.card__btn</span> {
+  margin-top: auto;       <span class="cm">/* push ke bawah */</span>
+  padding: 6px 14px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+<span class="cm">/* Responsive: stack vertical di mobile */</span>
+<span class="kw">@media</span> (max-width: 480px) {
+  <span class="kw">.card</span> { flex-direction: column; }
+  <span class="kw">.card__img</span> { width: 100%; height: 160px; }
+}</pre>
+        </div>
+        <div>
+          <div class="label"><span class="badge">LANDING PAGE</span> — Semantic HTML + Media Query Terpadu</div>
+          <pre><span class="cm">&lt;!-- HTML SEMANTIC --&gt;</span>
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;
+      &lt;a href=<span class="str">"#"</span> class=<span class="str">"logo"</span>&gt;Brand&lt;/a&gt;
+      &lt;ul class=<span class="str">"nav__list"</span>&gt;
+        &lt;li&gt;&lt;a href=<span class="str">"#about"</span>&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=<span class="str">"#work"</span>&gt;Work&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=<span class="str">"#contact"</span>&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section id=<span class="str">"hero"</span>&gt;
+      &lt;h1&gt;Headline Utama&lt;/h1&gt;
+      &lt;p&gt;Subheadline / tagline.&lt;/p&gt;
+      &lt;a href=<span class="str">"#"</span> class=<span class="str">"btn"</span>&gt;CTA Button&lt;/a&gt;
+    &lt;/section&gt;
+
+    &lt;section id=<span class="str">"work"</span>&gt;
+      &lt;article class=<span class="str">"card"</span>&gt;...&lt;/article&gt;
+      &lt;article class=<span class="str">"card"</span>&gt;...&lt;/article&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;&lt;p&gt;&amp;copy; 2025 Brand&lt;/p&gt;&lt;/footer&gt;
+&lt;/body&gt;
+
+<span class="cm">/* ── CSS MEDIA QUERY TERPADU ── */</span>
+<span class="kw">*</span> { box-sizing: border-box; margin: 0; padding: 0; }
+
+<span class="cm">/* Mobile First — Base Styles */</span>
+<span class="kw">nav</span>    { display: flex; flex-direction: column;
+          align-items: center; padding: 12px; }
+<span class="kw">.nav__list</span> { display: none; }          <span class="cm">/* hidden mobile */</span>
+<span class="kw">#hero</span>  { text-align: center; padding: 40px 16px; }
+<span class="kw">#work</span>  { display: flex; flex-direction: column;
+          gap: 16px; padding: 24px 16px; }
+<span class="kw">.card</span>  { border: 1px solid #ddd; padding: 16px; }
+
+<span class="cm">/* Tablet ≥ 768px */</span>
+<span class="kw">@media</span> (min-width: 768px) {
+  <span class="kw">nav</span>        { flex-direction: row;
+               justify-content: space-between; }
+  <span class="kw">.nav__list</span> { display: flex; gap: 20px;
+               list-style: none; }
+  <span class="kw">#work</span>      { flex-direction: row; flex-wrap: wrap; }
+  <span class="kw">.card</span>      { flex: 1 1 calc(50% - 16px); }
+}
+
+<span class="cm">/* Desktop ≥ 1024px */</span>
+<span class="kw">@media</span> (min-width: 1024px) {
+  <span class="kw">#hero</span>  { padding: 80px 40px; }
+  <span class="kw">.card</span>  { flex: 1 1 calc(33.33% - 16px); }
+  <span class="kw">#work</span>  { max-width: 1200px; margin: 0 auto; }
+}</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. SYNTAX HTML LENGKAP -->
+    <div class="section two-col">
+      <div class="section-header"><span class="icon">🏷</span> SYNTAX HTML — ANATOMI TAG &amp; ELEMEN</div>
+      <div class="two-col-inner">
+        <div>
+          <div class="label">Struktur Tag HTML</div>
+          <pre><span class="cm">&lt;!-- Tag Pembuka + Konten + Tag Penutup --&gt;</span>
+&lt;<span class="kw">tagname</span> <span class="attr">atribut</span>=<span class="str">"nilai"</span>&gt;Konten&lt;/<span class="kw">tagname</span>&gt;
+
+<span class="cm">&lt;!-- Self-closing tag (tidak perlu penutup) --&gt;</span>
+&lt;<span class="kw">img</span> <span class="attr">src</span>=<span class="str">"foto.jpg"</span> <span class="attr">alt</span>=<span class="str">"gambar"</span>&gt;
+&lt;<span class="kw">input</span> <span class="attr">type</span>=<span class="str">"text"</span>&gt;
+&lt;<span class="kw">br</span>&gt;  &lt;<span class="kw">hr</span>&gt;  &lt;<span class="kw">meta</span>&gt;  &lt;<span class="kw">link</span>&gt;</pre>
+          <div class="label">Atribut Global (berlaku di semua tag)</div>
+          <table>
+            <tr><th>Atribut</th><th>Fungsi</th></tr>
+            <tr><td><code>id="nama"</code></td><td>Identitas unik elemen</td></tr>
+            <tr><td><code>class="nama"</code></td><td>Kelompok elemen (CSS/JS)</td></tr>
+            <tr><td><code>style="..."</code></td><td>CSS inline langsung</td></tr>
+            <tr><td><code>title="..."</code></td><td>Tooltip saat hover</td></tr>
+            <tr><td><code>hidden</code></td><td>Sembunyikan elemen</td></tr>
+            <tr><td><code>data-*="val"</code></td><td>Atribut data custom</td></tr>
+            <tr><td><code>tabindex="n"</code></td><td>Urutan fokus keyboard</td></tr>
+            <tr><td><code>contenteditable</code></td><td>Konten bisa diedit</td></tr>
+          </table>
+          <div class="label">Tag Teks Inline Penting</div>
+          <pre>&lt;<span class="kw">strong</span>&gt;Tebal penting&lt;/<span class="kw">strong</span>&gt;
+&lt;<span class="kw">em</span>&gt;Miring/penekanan&lt;/<span class="kw">em</span>&gt;
+&lt;<span class="kw">span</span>&gt;Kontainer inline&lt;/<span class="kw">span</span>&gt;
+&lt;<span class="kw">mark</span>&gt;Teks disorot&lt;/<span class="kw">mark</span>&gt;
+&lt;<span class="kw">small</span>&gt;Teks kecil&lt;/<span class="kw">small</span>&gt;
+&lt;<span class="kw">sub</span>&gt;subscript&lt;/<span class="kw">sub</span>&gt; &lt;<span class="kw">sup</span>&gt;superscript&lt;/<span class="kw">sup</span>&gt;
+&lt;<span class="kw">code</span>&gt;kode program&lt;/<span class="kw">code</span>&gt;
+&lt;<span class="kw">pre</span>&gt;teks preformat&lt;/<span class="kw">pre</span>&gt;
+&lt;<span class="kw">blockquote</span>&gt;kutipan&lt;/<span class="kw">blockquote</span>&gt;
+&lt;<span class="kw">abbr</span> <span class="attr">title</span>=<span class="str">"kepanjangan"</span>&gt;singkatan&lt;/<span class="kw">abbr</span>&gt;</pre>
+        </div>
+        <div>
+          <div class="label">Tag Struktur Blok Umum</div>
+          <table>
+            <tr><th>Tag</th><th>Keterangan</th></tr>
+            <tr><td><code>&lt;div&gt;</code></td><td>Kontainer blok generik</td></tr>
+            <tr><td><code>&lt;p&gt;</code></td><td>Paragraf teks</td></tr>
+            <tr><td><code>&lt;h1&gt;–&lt;h6&gt;</code></td><td>Judul hierarki 1–6</td></tr>
+            <tr><td><code>&lt;ul&gt; &lt;ol&gt;</code></td><td>Daftar tak urut / urut</td></tr>
+            <tr><td><code>&lt;li&gt;</code></td><td>Item dalam list</td></tr>
+            <tr><td><code>&lt;table&gt;</code></td><td>Tabel data</td></tr>
+            <tr><td><code>&lt;form&gt;</code></td><td>Formulir input</td></tr>
+            <tr><td><code>&lt;figure&gt;</code></td><td>Gambar + caption</td></tr>
+            <tr><td><code>&lt;figcaption&gt;</code></td><td>Keterangan gambar</td></tr>
+            <tr><td><code>&lt;details&gt;</code></td><td>Accordion bawaan browser</td></tr>
+            <tr><td><code>&lt;summary&gt;</code></td><td>Judul dari &lt;details&gt;</td></tr>
+          </table>
+          <div class="label">Karakter Entitas HTML</div>
+          <table>
+            <tr><th>Karakter</th><th>Entitas</th></tr>
+            <tr><td>&amp;</td><td><code>&amp;amp;</code></td></tr>
+            <tr><td>&lt;</td><td><code>&amp;lt;</code></td></tr>
+            <tr><td>&gt;</td><td><code>&amp;gt;</code></td></tr>
+            <tr><td>"</td><td><code>&amp;quot;</code></td></tr>
+            <tr><td>©</td><td><code>&amp;copy;</code></td></tr>
+            <tr><td>&nbsp;</td><td><code>&amp;nbsp;</code> (spasi)</td></tr>
+          </table>
+          <div class="label">Aturan Penulisan HTML</div>
+          <pre><span class="cm">&lt;!-- ✓ Benar: tag lowercase --&gt;</span>
+&lt;<span class="kw">p</span> <span class="attr">class</span>=<span class="str">"teks"</span>&gt;Isi&lt;/<span class="kw">p</span>&gt;
+
+<span class="cm">&lt;!-- ✓ Atribut boolean (tanpa nilai) --&gt;</span>
+&lt;<span class="kw">input</span> <span class="attr">required</span> <span class="attr">disabled</span> <span class="attr">readonly</span>&gt;
+
+<span class="cm">&lt;!-- ✓ Nested wajib urut --&gt;</span>
+&lt;<span class="kw">ul</span>&gt;&lt;<span class="kw">li</span>&gt;Item&lt;/<span class="kw">li</span>&gt;&lt;/<span class="kw">ul</span>&gt;
+
+<span class="cm">&lt;!-- ✗ SALAH: tag tidak ditutup --&gt;</span>
+&lt;<span class="kw">p</span>&gt;Teks &lt;<span class="kw">b</span>&gt;tebal&lt;/<span class="kw">p</span>&gt;&lt;/<span class="kw">b</span>&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. SYNTAX CSS LENGKAP -->
+    <div class="section two-col">
+      <div class="section-header"><span class="icon">🎨</span> SYNTAX CSS — ANATOMI RULE &amp; PROPERTI PENTING</div>
+      <div class="two-col-inner">
+        <div>
+          <div class="label">Anatomi CSS Rule</div>
+          <pre><span class="cm">/* selector { properti: nilai; } */</span>
+
+<span class="kw">h1</span> {                    <span class="cm">/* selector */</span>
+  color: #333;           <span class="cm">/* deklarasi */</span>
+  font-size: 2rem;       <span class="cm">/* properti: nilai */</span>
+  margin: 0 auto;        <span class="cm">/* shorthand */</span>
+}
+
+<span class="cm">/* Multiple selector */</span>
+<span class="kw">h1</span>, <span class="kw">h2</span>, <span class="kw">h3</span> { color: #000; }
+
+<span class="cm">/* Combinator */</span>
+<span class="kw">div p</span>     { }   <span class="cm">/* descendant */</span>
+<span class="kw">ul > li</span>   { }   <span class="cm">/* child langsung */</span>
+<span class="kw">h1 + p</span>    { }   <span class="cm">/* saudara setelah */</span>
+<span class="kw">h1 ~ p</span>    { }   <span class="cm">/* semua saudara setelah */</span></pre>
+          <div class="label">Warna &amp; Background</div>
+          <pre><span class="kw">.elemen</span> {
+  color: #ff0000;          <span class="cm">/* hex */</span>
+  color: rgb(255, 0, 0);   <span class="cm">/* rgb */</span>
+  color: rgba(0,0,0,0.5);  <span class="cm">/* + opacity */</span>
+  color: hsl(0, 100%, 50%); <span class="cm">/* hsl */</span>
+
+  background-color: #fff;
+  background-image: url('bg.jpg');
+  background-size: cover | contain | auto;
+  background-position: center center;
+  background-repeat: no-repeat | repeat;
+
+  <span class="cm">/* Shorthand */</span>
+  background: #000 url('bg.jpg')
+              no-repeat center/cover;
+  opacity: 0.8;            <span class="cm">/* 0=bening,1=solid */</span>
+}</pre>
+          <div class="label">Positioning</div>
+          <pre><span class="kw">.box</span> {
+  position: static;    <span class="cm">/* default */</span>
+  position: relative;  <span class="cm">/* relatif dirinya */</span>
+  position: absolute;  <span class="cm">/* relatif ancestor */</span>
+  position: fixed;     <span class="cm">/* relatif viewport */</span>
+  position: sticky;    <span class="cm">/* scroll + fix */</span>
+
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  z-index: 10;         <span class="cm">/* tumpukan layer */</span>
+}</pre>
+        </div>
+        <div>
+          <div class="label">CSS Variable (Custom Properties)</div>
+          <pre><span class="cm">/* Deklarasi di :root (global) */</span>
+<span class="kw">:root</span> {
+  --primary: #3b82f6;
+  --font-size-base: 16px;
+  --gap: 1rem;
+}
+
+<span class="cm">/* Pemakaian */</span>
+<span class="kw">.btn</span> {
+  background: var(--primary);
+  font-size: var(--font-size-base);
+  gap: var(--gap);
+  <span class="cm">/* Fallback jika var tidak ada */</span>
+  color: var(--text, #333);
+}</pre>
+          <div class="label">Transition &amp; Transform</div>
+          <pre><span class="kw">.btn</span> {
+  transition: all 0.3s ease;
+  <span class="cm">/* properti durasi timing */</span>
+  transition: background 0.2s ease-in-out,
+              transform  0.3s ease;
+}
+<span class="kw">.btn:hover</span> {
+  transform: scale(1.05);
+  transform: translateX(10px);
+  transform: rotate(45deg);
+  transform: translateY(-4px) scale(1.1);
+}</pre>
+          <div class="label">Properti Ukuran &amp; Overflow</div>
+          <table>
+            <tr><th>Properti</th><th>Nilai &amp; Keterangan</th></tr>
+            <tr><td><code>width</code></td><td>px | % | vw | auto | fit-content</td></tr>
+            <tr><td><code>height</code></td><td>px | % | vh | auto | min-content</td></tr>
+            <tr><td><code>min-width</code></td><td>Lebar minimum elemen</td></tr>
+            <tr><td><code>max-width</code></td><td>Lebar maksimum elemen</td></tr>
+            <tr><td><code>min-height</code></td><td>Tinggi minimum</td></tr>
+            <tr><td><code>overflow</code></td><td>visible | hidden | scroll | auto</td></tr>
+            <tr><td><code>overflow-x/y</code></td><td>Kontrol per sumbu</td></tr>
+            <tr><td><code>object-fit</code></td><td>cover | contain | fill | none</td></tr>
+            <tr><td><code>cursor</code></td><td>pointer | default | not-allowed</td></tr>
+            <tr><td><code>visibility</code></td><td>visible | hidden (masih ada ruang)</td></tr>
+          </table>
+          <div class="label">Selector Pseudo-element</div>
+          <pre><span class="kw">p::first-line</span>  { }  <span class="cm">/* baris pertama */</span>
+<span class="kw">p::first-letter</span>{ }  <span class="cm">/* huruf pertama */</span>
+<span class="kw">::selection</span>    { }  <span class="cm">/* teks diseleksi */</span>
+<span class="kw">::placeholder</span>  { }  <span class="cm">/* teks placeholder */</span>
+<span class="kw">.box::before</span>   {    <span class="cm">/* elemen sebelum */</span>
+  content: "★ ";
+}
+<span class="kw">.box::after</span>    {    <span class="cm">/* elemen sesudah */</span>
+  content: "";
+  display: block;
+}</pre>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end main -->
+</div><!-- end workspace -->
+
+<!-- STATUS BAR -->
+<div class="statusbar">
+  <span>⎇ main</span>
+  <span>UTF-8</span>
+  <span>HTML · CSS Syntax · Flexbox · RWD</span>
+  <span>Ln 1, Col 1</span>
+  <span style="margin-left:auto">Web Development I — UTS Quick Reference © 2025</span>
+</div>
+
+</body>
+</html>
