@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Nilai Mahasiswa</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { 
+            background: #f8f9fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .profile-card {
+            background: linear-gradient(45deg, #4e73df, #224abe);
+            color: white;
+            border-radius: 15px;
+        }
+        .stat-card {
+            border: none;
+            border-radius: 12px;
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) ;
+        }
+        .table-card { border-radius: 15px; overflow: hidden; }
+    </style>
+</head>
+<body>
+
+<div class="container py-4">
+    
+    <!-- Header: Profile -->
+    <div class="card profile-card shadow-sm p-4 mb-4 border-0">
+        <div class="d-flex align-items-center">
+            <img src="https://ui-avatars.com/api/?name=Rasya+Anugrah&background=fff&color=4e73df" class="rounded-circle border border-3 border-white me-3" width="80">
+            <div>
+                <h3 class="fw-bold mb-0">Rasya Anugrah Dyvanio</h3>
+                <p class="mb-2 fw-light opacity-90" style="font-size: 1.1rem;">Software Engineer</p>
+                <div class="d-flex gap-2">
+                    <span class="badge bg-white text-primary">Mahasiswa Aktif</span>
+                    <span class="badge" style="background: rgba(255,255,255,0.2);">TRPL UGM</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistik Interaktif -->
+    <div class="row mb-4 g-3">
+        <div class="col-md-4">
+            <div class="card stat-card shadow-sm p-4 border-primary bg-white h-100">
+                <small class="text-muted fw-bold d-block mb-1">TOTAL SKS</small>
+                <h2 class="mb-0 fw-bold">84 <span class="fs-4">📖</span></h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card shadow-sm p-4 border-warning bg-white h-100">
+                <small class="text-muted fw-bold d-block mb-1">IPK KUMULATIF</small>
+                <h2 class="mb-0 text-warning fw-bold">3.85 <span class="fs-4">⭐</span></h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card shadow-sm p-4 border-success bg-white h-100">
+                <small class="text-muted fw-bold d-block mb-1">MATKUL LULUS</small>
+                <h2 class="mb-0 text-success fw-bold">24 <span class="fs-4">✅</span></h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabel Nilai -->
+    <div class="card table-card shadow-sm border-0">
+        <div class="card-header bg-white py-3">
+            <h5 class="mb-0 fw-bold text-dark">Daftar Nilai Mahasiswa</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">No</th>
+                            <th>Mata Kuliah</th>
+                            <th>SKS</th>
+                            <th>Nilai Huruf</th>
+                            <th>Nilai Angka</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Baris 1: A (Hijau) -->
+                        <tr>
+                            <td class="ps-4">1</td>
+                            <td class="fw-bold">Pemrograman Web 1</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success">A</span></td>
+                            <td>4.00</td>
+                            <td class="text-center"><button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalWeb">Detail</button></td>
+                        </tr>
+                        <!-- Baris 2: B+ (Biru) -->
+                        <tr>
+                            <td class="ps-4">2</td>
+                            <td class="fw-bold">UI/UX Design</td>
+                            <td>3</td>
+                            <td><span class="badge bg-primary">B+</span></td>
+                            <td>3.50</td>
+                            <td class="text-center"><button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalUIUX">Detail</button></td>
+                        </tr>
+                        <!-- Baris 3: C (Kuning) -->
+                        <tr>
+                            <td class="ps-4">3</td>
+                            <td class="fw-bold">Bahasa Inggris</td>
+                            <td>2</td>
+                            <td><span class="badge bg-warning text-dark">C</span></td>
+                            <td>2.00</td>
+                            <td class="text-center"><button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalInggris">Detail</button></td>
+                        </tr>
+                        <!-- Baris 4: D (Merah) -->
+                        <tr>
+                            <td class="ps-4">4</td>
+                            <td class="fw-bold">Struktur Data</td>
+                            <td>4</td>
+                            <td><span class="badge bg-danger">D</span></td>
+                            <td>1.00</td>
+                            <td class="text-center"><button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalStruktur">Detail</button></td>
+                        </tr>
+                        <!-- Baris 5: E (Merah) -->
+                        <tr>
+                            <td class="ps-4">5</td>
+                            <td class="fw-bold">Basis Data</td>
+                            <td>3</td>
+                            <td><span class="badge bg-danger">E</span></td>
+                            <td>0.00</td>
+                            <td class="text-center"><button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#modalBasis">Detail</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BAGIAN MODAL -->
+
+<div class="modal fade" id="modalWeb" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow rounded-4"><div class="modal-header"><h5 class="modal-title fw-bold">Detail</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body text-center py-4"><h3 class="text-primary fw-bold">Pemrograman Web 1</h3><p class="text-muted">Dosen: Achmad Chairudin</p></div></div></div>
+</div>
+
+<div class="modal fade" id="modalUIUX" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow rounded-4"><div class="modal-header"><h5 class="modal-title fw-bold">Detail</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body text-center py-4"><h3 class="text-primary fw-bold">UI/UX Design</h3><p class="text-muted">Dosen: Yusron Fuad</p></div></div></div>
+</div>
+
+<div class="modal fade" id="modalInggris" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow rounded-4"><div class="modal-header"><h5 class="modal-title fw-bold">Detail</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body text-center py-4"><h3 class="text-primary fw-bold">Bahasa Inggris</h3><p class="text-muted">Dosen: Mr.Eric</p></div></div></div>
+</div>
+
+<div class="modal fade" id="modalStruktur" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow rounded-4"><div class="modal-header"><h5 class="modal-title fw-bold">Detail</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body text-center py-4"><h3 class="text-danger fw-bold">Struktur Data</h3><p class="text-muted">Dosen: Umar Taufiq</p></div></div></div>
+</div>
+
+<div class="modal fade" id="modalBasis" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow rounded-4"><div class="modal-header"><h5 class="modal-title fw-bold">Detail</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body text-center py-4"><h3 class="text-danger fw-bold">Basis Data</h3><p class="text-muted">Dosen: Imam Fahturrozi</p></div></div></div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

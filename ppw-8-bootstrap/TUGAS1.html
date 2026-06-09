@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 1 - Eksplorasi Grid System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Mengubah font bawaan website */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa; 
+        }
+        
+        /* Modifikasi Navbar */
+        .navbar {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bayangan lembut di bawah navbar */
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Desain Judul Utama */
+        .judul-halaman {
+            font-weight: 700;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+        /* Garis biru di bawah judul */
+        .judul-halaman::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: #0d6efd;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+
+        
+        /* Modifikasi Tombol */
+        .btn-primary {
+            border-radius: 50px; /* Tombol bentuk kapsul */
+            padding: 8px 24px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #ffffff ;
+            border-top: 1px solid #e9ecef;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#"><strong>NioKu</strong></a>
+            
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-medium" aria-current="page" href="#">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="#">Pesanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="#">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <main class="container my-5">
+        <div class="text-center mb-5">
+            <h2 class="judul-halaman">Tugas 1 Grid System</h2>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="img-wrapper">
+                        <img src="https://picsum.photos/id/1015/400/250" class="card-img-top" alt="Gambar 1">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Card Pertama</h5>
+                        <p class="card-text text-muted">Lorem ipsum dolor sit amet. Saepe perferendis molestias ratione illum laboriosam iste quidem labore quisquam!</p>
+                        <div class="mt-auto pt-3">
+                            <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="img-wrapper">
+                        <img src="https://picsum.photos/id/1016/400/250" class="card-img-top" alt="Gambar 2">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Card Kedua</h5>
+                        <p class="card-text text-muted">Lorem ipsum dolor sit amet. Saepe perferendis molestias ratione illum laboriosam iste quidem labore quisquam!</p>
+                        <div class="mt-auto pt-3">
+                            <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="img-wrapper">
+                        <img src="https://picsum.photos/id/1018/400/250" class="card-img-top" alt="Gambar 3">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Card Ketiga</h5>
+                        <p class="card-text text-muted">Lorem ipsum dolor sit amet. Saepe perferendis molestias ratione illum laboriosam iste quidem labore quisquam!</p>
+                        <div class="mt-auto pt-3">
+                            <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 mt-auto">
+        <div class="container">
+            <p class="text-center text-muted mb-0 fw-medium">&copy; 2026 Rasya Anugrah Dyvanio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
